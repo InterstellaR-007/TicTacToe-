@@ -9,6 +9,7 @@ namespace TicTacToe_Game
     {
         char[] tictac_board;
         char player_Input = ' ';
+        int player_Index = 0;
         char computer_Input = ' ';
         char[] LetterIndex = { 'X', 'O' };
         String input_ValidationString =  "[XO]{1}";
@@ -52,6 +53,20 @@ namespace TicTacToe_Game
             for(int i =1; i<10;i=i+3)
             {
                 Console.WriteLine("  "+ tictac_board[i] +" | "+ tictac_board[i+1] + " | "+ tictac_board[i+2]);
+            }
+        }
+        public void UC4_IndexOfLetter(int player_Index)
+        {
+            Regex regex = new Regex(@"[1-9]{1}");
+            Match match = regex.Match(player_Index.ToString());
+            if (match.Success)
+            {
+                this.player_Index = player_Index;
+                Console.WriteLine("Entered Index of Letter is : " + player_Index);
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
             }
         }
     }

@@ -16,6 +16,9 @@ namespace TicTacToe_Game
             ticTac.UC2_LetterAssign(player_Input);
 
             ticTac.UC3_ShowBoard();
+            Console.WriteLine("Enter the Letter Index from 1-9: ");
+            ticTac.UC4_IndexOfLetter(int.Parse(Console.ReadLine()));
+
         }
     }
 }
