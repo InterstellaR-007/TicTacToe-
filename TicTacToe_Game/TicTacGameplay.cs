@@ -9,7 +9,7 @@ namespace TicTacToe_Game
         public void UC1_TicTacBoard()
         {
             char[] tictac_board = new char[10];
-            Console.WriteLine("Tic Tac board initialised !"+ tictac_board[1]);
+            Console.WriteLine("Tic Tac board initialised !");
 
         }
     }
