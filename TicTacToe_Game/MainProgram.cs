@@ -14,6 +14,8 @@ namespace TicTacToe_Game
             char player_Input = char.Parse(Console.ReadLine());
 
             ticTac.UC2_LetterAssign(player_Input);
+
+            ticTac.UC3_ShowBoard();
         }
     }
 }

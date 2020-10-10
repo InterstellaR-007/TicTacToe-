@@ -46,5 +46,13 @@ namespace TicTacToe_Game
 
          
         }
+
+        public void UC3_ShowBoard()
+        {
+            for(int i =1; i<10;i=i+3)
+            {
+                Console.WriteLine("  "+ tictac_board[i] +" | "+ tictac_board[i+1] + " | "+ tictac_board[i+2]);
+            }
+        }
     }
 }
