@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace TicTacToe_Game
 {
@@ -10,6 +11,7 @@ namespace TicTacToe_Game
         char player_Input = ' ';
         char computer_Input = ' ';
         char[] LetterIndex = { 'X', 'O' };
+        String input_ValidationString =  "[XO]{1}";
 
         public void UC1_TicTacBoard()
         {
@@ -23,14 +25,26 @@ namespace TicTacToe_Game
         }
         public void UC2_LetterAssign(char player_Input)
         {
-            this.player_Input = player_Input;
-            Random random = new Random();
-            int input_CompIndex = random.Next(0, 2);
-            computer_Input = LetterIndex[input_CompIndex];
+            
+            Regex regex = new Regex(input_ValidationString);
+            Match match = regex.Match(player_Input.ToString());
 
-            Console.WriteLine("Player Selected Letter is : " + player_Input);
-            Console.WriteLine("Computer Selected Letter is : " + computer_Input);
+            if(match.Success) 
+            {
+                this.player_Input = player_Input;
+                Random random = new Random();
+                int input_CompIndex = random.Next(0, 2);
+                computer_Input = LetterIndex[input_CompIndex];
 
+                Console.WriteLine("Player Selected Letter is : " + player_Input);
+                Console.WriteLine("Computer Selected Letter is : " + computer_Input);
+            }
+            else
+            {
+                Console.WriteLine("Invalid Player Input");
+            }
+
+         
         }
     }
 }
