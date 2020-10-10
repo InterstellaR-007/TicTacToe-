@@ -17,9 +17,9 @@ namespace TicTacToe_Game
         public void UC1_TicTacBoard()
         {
             tictac_board = new char[10];
-            foreach( var i in tictac_board)
+            for(int i = 0; i < 10; i++)
             {
-                tictac_board[i] =  ' ';
+                tictac_board[i] = ' ';
             }
             Console.WriteLine("Tic Tac board initialised !");
 
@@ -61,9 +61,15 @@ namespace TicTacToe_Game
             Match match = regex.Match(player_Index.ToString());
             if (match.Success)
             {
-                this.player_Index = player_Index;
-                Console.WriteLine("Entered Index of Letter is : " + player_Index);
+                if (tictac_board[player_Index]==' ')
+                {
+                    this.player_Index = player_Index;
+                    Console.WriteLine("Entered Index of Letter is : " + player_Index);
+                }
+                else
+                    Console.WriteLine("Entered Index is not free ");
             }
+
             else
             {
                 Console.WriteLine("Invalid Input");
