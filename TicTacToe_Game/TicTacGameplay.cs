@@ -6,10 +6,15 @@ namespace TicTacToe_Game
 {
     public class TicTacGameplay
     {
+        char[] tictac_board;
         public void UC1_TicTacBoard()
         {
-            char[] tictac_board = new char[10];
-            Console.WriteLine("Tic Tac board initialised !"+ tictac_board[1]);
+            tictac_board = new char[10];
+            foreach( var i in tictac_board)
+            {
+                tictac_board[i] =  ' ';
+            }
+            Console.WriteLine("Tic Tac board initialised !");
 
         }
     }
