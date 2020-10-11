@@ -11,15 +11,19 @@ namespace TicTacToe_Game
 
             int state = 0;
 
-            while (state != 5) {
+            while (state != 6) {
 
                 switch (state)
                 {
                     case 0:
-                        ticTac.UC1_TicTacBoard();
+                        ticTac.UC6_Toss();
                         break;
 
                     case 1:
+                        ticTac.UC1_TicTacBoard();
+                        break;
+
+                    case 2:
                         ticTac.UC2_LetterAssign();
                         break;
 

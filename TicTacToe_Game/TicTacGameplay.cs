@@ -10,6 +10,7 @@ namespace TicTacToe_Game
     {
         public const int CHANCE_VALUE_PLAYER = 0;
         public const int CHANCE_VALUE_COMPUTER = 1;
+        public String[] toss_Choices = { "Player", "Computer" };
         public int first_Chance;
         char[] tictac_board;
         char player_Input = ' ';
@@ -71,6 +72,7 @@ namespace TicTacToe_Game
             Random random = new Random();
             int toss_Value=random.Next(0, 2);
             first_Chance = toss_Value;
+            Console.WriteLine(toss_Choices[first_Chance] + " has won the toss and will start first");
             return true;
 
         }
