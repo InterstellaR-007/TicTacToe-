@@ -10,6 +10,8 @@ namespace TicTacToe_Game
     {
         public const int CHANCE_VALUE_PLAYER = 0;
         public const int CHANCE_VALUE_COMPUTER = 1;
+        public int last_Chance;
+        public int winner;
         public String[] toss_Choices = { "Player", "Computer" };
         public int first_Chance;
         char[] tictac_board;
@@ -76,6 +78,27 @@ namespace TicTacToe_Game
             return true;
 
         }
+
+        public Boolean UC7_CheckWinner()
+        {
+            for(int i =0; i<2;i++)
+            {
+                if (tictac_board[1].Equals(LetterIndex[i]) && tictac_board[2].Equals(LetterIndex[i]) && tictac_board[3].Equals(LetterIndex[i]))
+                    return true;
+                if (tictac_board[3].Equals(LetterIndex[i]) && tictac_board[6].Equals(LetterIndex[i]) && tictac_board[9].Equals(LetterIndex[i]))
+                    return true;
+                if (tictac_board[7].Equals(LetterIndex[i]) && tictac_board[8].Equals(LetterIndex[i]) && tictac_board[9].Equals(LetterIndex[i]))
+                    return true;
+                if (tictac_board[1].Equals(LetterIndex[i]) && tictac_board[4].Equals(LetterIndex[i]) && tictac_board[7].Equals(LetterIndex[i]))
+                    return true;
+                if (tictac_board[1].Equals(LetterIndex[i]) && tictac_board[5].Equals(LetterIndex[i]) && tictac_board[9].Equals(LetterIndex[i]))
+                    return true;
+                if (tictac_board[3].Equals(LetterIndex[i]) && tictac_board[5].Equals(LetterIndex[i]) && tictac_board[7].Equals(LetterIndex[i]))
+                    return true;
+            }
+            return false;
+            
+        }
         public Boolean UC4_IndexOfLetter()
         {
             Console.WriteLine("Enter the Letter Index from 1-9: ");
@@ -84,11 +107,12 @@ namespace TicTacToe_Game
             Match match = regex.Match(player_Index_Console);
             if (match.Success)
             {
-                if (tictac_board[player_Index] == ' ')
+                if (tictac_board[int.Parse(player_Index_Console)] == ' ')
                 {
                     player_Index = int.Parse(player_Index_Console);
                     tictac_board[player_Index] = player_Input;
                     Console.WriteLine("Entered Index of Letter is : " + player_Index);
+                    last_Chance = 1;
                     return true;
                 }
                 else 
