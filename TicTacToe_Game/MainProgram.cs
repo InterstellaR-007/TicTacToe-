@@ -8,16 +8,33 @@ namespace TicTacToe_Game
         {
             Console.WriteLine("Welcome to Tic tac toe game");
             TicTacGameplay ticTac = new TicTacGameplay();
-            ticTac.UC1_TicTacBoard();
 
-            Console.WriteLine("Enter the Letter 'X' or 'O' :");
-            char player_Input = char.Parse(Console.ReadLine());
+            int state = 0;
 
-            ticTac.UC2_LetterAssign(player_Input);
+            while (state != 5) {
 
-            ticTac.UC3_ShowBoard();
-            Console.WriteLine("Enter the Letter Index from 1-9: ");
-            ticTac.UC4_IndexOfLetter(int.Parse(Console.ReadLine()));
+                switch (state)
+                {
+                    case 0:
+                        ticTac.UC1_TicTacBoard();
+                        break;
+
+                    case 1:
+                        ticTac.UC2_LetterAssign();
+                        break;
+
+                    case 3:
+                        ticTac.UC4_IndexOfLetter();
+                        break;
+
+                    case 4:
+                        ticTac.UC3_ShowBoard();
+                        break;
+
+                }
+                state++;
+            }
+
 
         }
     }
