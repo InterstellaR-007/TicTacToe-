@@ -42,7 +42,7 @@ namespace TicTacToe_Game
                         break;
 
                     case 5:
-                        if (ticTac.UC7_CheckWinner())
+                        if (ticTac.UC7_IS_WINNING())
                         {
                             is_Winner = true;
                             Console.WriteLine("Player has won");

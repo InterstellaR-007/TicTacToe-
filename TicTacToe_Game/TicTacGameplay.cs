@@ -11,13 +11,17 @@ namespace TicTacToe_Game
         public const int CHANCE_VALUE_PLAYER = 0;
         public const int CHANCE_VALUE_COMPUTER = 1;
         public int last_Chance;
+        
         public int winner;
         public String[] toss_Choices = { "Player", "Computer" };
         public int first_Chance;
         char[] tictac_board;
+
         char player_Input = ' ';
-        int player_Index = 0;
         char computer_Input = ' ';
+        int player_Index = 0;
+        int computer_Index = 0;
+
         char[] LetterIndex = { 'X', 'O' };
         String input_ValidationString =  "[XO]{1}";
 
@@ -68,6 +72,46 @@ namespace TicTacToe_Game
                 Console.WriteLine("  "+ tictac_board[i] +" | "+ tictac_board[i+1] + " | "+ tictac_board[i+2]);
             }
         }
+
+        public void UC8_ComputerMove()
+        {
+            if (ComputerWinningMove() != 0)
+            {
+                tictac_board[ComputerWinningMove()] = computer_Input; 
+            }
+        }
+        public int ComputerWinningMove()
+        {
+            
+            for(int index = 1; index <= 9; index ++)
+            {
+                
+                if (tictac_board[index] == ' ')
+                {
+                    tictac_board[index] = LetterIndex[0];
+                    if (UC7_IS_WINNING())
+                    {
+                        tictac_board[index] = ' ';
+                        computer_Input = LetterIndex[0];
+                        return index;
+                    }
+                    tictac_board[index] = LetterIndex[1];
+                    if (UC7_IS_WINNING())
+                    {
+                        tictac_board[index] = ' ';
+                        computer_Input = LetterIndex[1];
+                        return index;
+                    }
+
+
+
+                }
+                tictac_board[index] = ' ';
+
+            }
+            
+            return 0;
+        }
         public Boolean UC6_Toss()
         {
             
@@ -79,7 +123,7 @@ namespace TicTacToe_Game
 
         }
 
-        public Boolean UC7_CheckWinner()
+        public Boolean UC7_IS_WINNING()
         {
             for(int i =0; i<2;i++)
             {
@@ -107,6 +151,7 @@ namespace TicTacToe_Game
             Match match = regex.Match(player_Index_Console);
             if (match.Success)
             {
+
                 if (tictac_board[int.Parse(player_Index_Console)] == ' ')
                 {
                     player_Index = int.Parse(player_Index_Console);
