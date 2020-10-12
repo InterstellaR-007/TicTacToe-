@@ -11,6 +11,7 @@ namespace TicTacToe_Game
 
             int state = 0;
             Boolean is_Winner = false;
+            String current_Chance = "";
 
             while ( is_Winner!=true) {
 
@@ -32,7 +33,9 @@ namespace TicTacToe_Game
                         break;
 
                     case 3:
-                        ticTac.UC4_IndexOfLetter();
+                        
+                        if(ticTac.UC4_IndexOfLetter())
+                            current_Chance = "Player";
                         state = 4;
                         break;
 
@@ -42,10 +45,22 @@ namespace TicTacToe_Game
                         break;
 
                     case 5:
+                        
+                        if(ticTac.UC8_ComputerMove())
+                            current_Chance = "Computer";
+                        state = 6;
+                        break;
+
+                    case 6:
+                        ticTac.UC3_ShowBoard();
+                        state = 7;
+                        break;
+
+                    case 7:
                         if (ticTac.UC7_IS_WINNING())
                         {
                             is_Winner = true;
-                            Console.WriteLine("Player has won");
+                            Console.WriteLine(current_Chance+" has won");
                         }
                         state = 2;
                         break;

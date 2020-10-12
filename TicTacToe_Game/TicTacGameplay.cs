@@ -49,11 +49,11 @@ namespace TicTacToe_Game
 
                 player_Input = player_Input_Console;
                 Random random = new Random();
-                int input_CompIndex = random.Next(0, 2);
-                computer_Input = LetterIndex[input_CompIndex];
+                
+                
 
                 Console.WriteLine("Player Selected Letter is : " + player_Input);
-                Console.WriteLine("Computer Selected Letter is : " + computer_Input);
+                
                 return true;
             } 
             else
@@ -73,16 +73,50 @@ namespace TicTacToe_Game
             }
         }
 
-        public void UC8_ComputerMove()
+        public Boolean UC8_ComputerMove()
         {
             if (ComputerWinningMove() != 0)
             {
-                tictac_board[ComputerWinningMove()] = computer_Input;
+                computer_Index = ComputerWinningMove();
+                tictac_board[computer_Index] = computer_Input;
+                Console.WriteLine("Computer Winning Move Selected Letter is : " + computer_Input + " at index :" + computer_Index);
+                return true;
             }
-            if (ComputerBlockingMove() != 0)
+            else if (ComputerBlockingMove() != 0)
             {
+                computer_Index = ComputerBlockingMove();
                 tictac_board[ComputerBlockingMove()] = computer_Input;
+                Console.WriteLine("Computer Blocking Move Selected Letter is : " + computer_Input + " at index :" + computer_Index);
+                return true;
             }
+            else if (ComputerCornerMove() != 0)
+            {
+                computer_Index = ComputerCornerMove();
+                tictac_board[ComputerCornerMove()] = computer_Input;
+                Console.WriteLine("Computer Corner Move Selected Letter is : " + computer_Input + " at index :" + computer_Index);
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public int ComputerCornerMove()
+        {
+            int[] corner_Moves_Index = { 1, 3, 7, 9 };
+            List<int> available_Corner_Moves_Index = new List<int>();
+            foreach(var i in corner_Moves_Index)
+            {
+                if(tictac_board[i]==' ')
+                {
+                    available_Corner_Moves_Index.Add(i);
+                }
+            }
+            if (available_Corner_Moves_Index.Count == 0)
+                return 0;
+
+            Random random = new Random();
+            computer_Input = LetterIndex[random.Next(0, 2)];
+            return available_Corner_Moves_Index [random.Next(0, available_Corner_Moves_Index.Count)];
 
         }
         public int ComputerBlockingMove()
@@ -98,6 +132,7 @@ namespace TicTacToe_Game
                     {
                         
                         computer_Input = LetterIndex[1];
+                        tictac_board[index] = ' ';
                         return index;
                     }
                     tictac_board[index] = LetterIndex[1];
@@ -105,10 +140,11 @@ namespace TicTacToe_Game
                     {
                         
                         computer_Input = LetterIndex[0];
+                        tictac_board[index] = ' ';
                         return index;
                     }
 
-                    tictac_board[index] = ' ';
+                   
 
                 }
                 
