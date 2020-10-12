@@ -77,8 +77,9 @@ namespace TicTacToe_Game
         {
             if (ComputerWinningMove() != 0)
             {
-                tictac_board[ComputerWinningMove()] = computer_Input; 
+                tictac_board[ComputerWinningMove()] = computer_Input;
             }
+
         }
         public int ComputerWinningMove()
         {
