@@ -79,8 +79,45 @@ namespace TicTacToe_Game
             {
                 tictac_board[ComputerWinningMove()] = computer_Input;
             }
+            if (ComputerBlockingMove() != 0)
+            {
+                tictac_board[ComputerBlockingMove()] = computer_Input;
+            }
 
         }
+        public int ComputerBlockingMove()
+        {
+
+            for (int index = 1; index <= 9; index++)
+            {
+
+                if (tictac_board[index] == ' ')
+                {
+                    tictac_board[index] = LetterIndex[0];
+                    if (ComputerWinningMove()!=0)
+                    {
+                        
+                        computer_Input = LetterIndex[1];
+                        return index;
+                    }
+                    tictac_board[index] = LetterIndex[1];
+                    if (ComputerWinningMove() != 0)
+                    {
+                        
+                        computer_Input = LetterIndex[0];
+                        return index;
+                    }
+
+                    tictac_board[index] = ' ';
+
+                }
+                
+
+            }
+
+            return 0;
+        }
+
         public int ComputerWinningMove()
         {
             
@@ -104,10 +141,10 @@ namespace TicTacToe_Game
                         return index;
                     }
 
-
+                    tictac_board[index] = ' ';
 
                 }
-                tictac_board[index] = ' ';
+                
 
             }
             
